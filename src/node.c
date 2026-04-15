@@ -5,6 +5,12 @@
 
 
 
+static void merge_linear_nodes(Node* current_target, Node* current_source);
+static bool add_child_if_branch(Node* const target, Node* const source);
+
+
+
+
 bool is_word_valid(const char* const word)
 {
   if (!word)
