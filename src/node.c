@@ -74,7 +74,7 @@ Node* node_create_from_word(const char* word)
 
 void node_add_child(Node* const parent, Node* const child)
 {
-  if (!parent || !child || parent->children_count >= MAX_NODE_CHILDREN_LENGTH)
+  if (!parent || !child || parent->children_count >= MAX_NODE_CHILDREN)
     return;
 
   child->parent = parent;

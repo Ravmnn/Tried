@@ -1,4 +1,4 @@
-sources = files('main.c', 'node.c')
+sources = files('main.c', 'node.c', 'visual_node.c', 'world.c')
 
 
 

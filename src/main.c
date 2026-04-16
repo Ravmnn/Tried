@@ -2,34 +2,46 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <tried/node.h>
-
 #include <raylib.h>
 
-
-
-
-void validate_input(const char* const input);
+#include <tried/node.h>
+#include <tried/world.h>
 
 
 
 
 int main(void)
 {
-  InitWindow(800, 600, "Tried");
+  SetConfigFlags(FLAG_FULLSCREEN_MODE);
+
+  int monitor = GetCurrentMonitor();
+  InitWindow(GetMonitorWidth(monitor), GetMonitorHeight(monitor), "Tried");
+
+  SetTargetFPS(60);
+
+
+  World* world = world_create((VisualNodeFactory){
+    .color = WHITE,
+    .radius = 15.0f,
+    .string_length = 150.0f,
+    .string_tension = 5.0f
+  });
+  world->drag_force = 4.0f;
 
   while (!WindowShouldClose())
   {
-    BeginDrawing();
+    world_update(world);
 
+
+    BeginDrawing();
       ClearBackground(BLACK);
 
 
-      DrawText("Hello, world!", 190, 200, 20, LIGHTGRAY);
-
+      world_draw(world);
 
     EndDrawing();
   }
+
 
   CloseWindow();
 

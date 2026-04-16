@@ -1,7 +1,9 @@
 #pragma once
 
+#include <stddef.h>
+
 #define MAX_WORD_LENGTH 50
-#define MAX_NODE_CHILDREN_LENGTH 16
+#define MAX_NODE_CHILDREN 16
 
 
 
@@ -9,8 +11,8 @@
 typedef struct Node
 {
   struct Node* parent;
-  struct Node* children[MAX_NODE_CHILDREN_LENGTH];
-  int children_count;
+  struct Node* children[MAX_NODE_CHILDREN];
+  size_t children_count;
 
   char character;
 
